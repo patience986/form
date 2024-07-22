@@ -5,9 +5,12 @@ function submitForm() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
+    let phoneNumber= document.getElementById("phoneNumber").value;
 
     //validate email format
     const emailFormat = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+    //validate phone number format
+    const phoneFormat = /^\+?\d{1,15}$/;
 
     //validate form data
     if (name === "" || email === "" || password === "" || confirmPassword === "") {
@@ -22,6 +25,10 @@ function submitForm() {
         alert("Passwords do not match");
         return;
     }
+    else if (!phoneFormat.test(phoneNumber)) {
+        alert("Please enter a valid phone number");
+        return;
+    }
     else {
         alert("Form submitted successfully");
         // clear form inputs
@@ -29,6 +36,7 @@ function submitForm() {
         document.getElementById("email").value = "";
         document.getElementById("password").value = "";
         document.getElementById("confirmPassword").value = "";
+        document.getElementById("phoneNumber").value = "";
     }
 }
 
